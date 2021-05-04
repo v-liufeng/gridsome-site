@@ -273,18 +273,18 @@ export default {
     this.$nextTick(() => {
       setInterval(this.listenMusic, 1000);
     });
-    let width = window.innerWidth;
-    for (let i = 0; i < 12; i++) {
-      let temp = {};
-      let left = this.$util.randomInt(10, width - 310);
-      if (left > width / 2 - 150) {
-        left += 300;
-      }
-      temp["left"] = left;
-      temp["top"] = this.$util.randomInt(20, 300);
-      temp["size"] = this.$util.randomInt(20, 40);
-      this.randomIcon.push(temp);
-    }
+    // let width = window.innerWidth;
+    // for (let i = 0; i < 12; i++) {
+    //   let temp = {};
+    //   let left = this.$util.randomInt(10, width - 310);
+    //   if (left > width / 2 - 150) {
+    //     left += 300;
+    //   }
+    //   temp["left"] = left;
+    //   temp["top"] = this.$util.randomInt(20, 300);
+    //   temp["size"] = this.$util.randomInt(20, 40);
+    //   this.randomIcon.push(temp);
+    // }
   },
   created() {
     this.$store.dispatch("Init")
@@ -319,22 +319,22 @@ export default {
       }
     },
     moveIcon(index) {
-      let width = window.innerWidth;
-      this.randomIcon[index]["top"] = this.$util.randomInt(20, 300);
-      let left = this.$util.randomInt(10, width - 310);
-      if (left > width / 2 - 150) {
-        left += 300;
-      }
-      this.randomIcon[index]["left"] = left;
+      // let width = window.innerWidth;
+      // this.randomIcon[index]["top"] = this.$util.randomInt(20, 300);
+      // let left = this.$util.randomInt(10, width - 310);
+      // if (left > width / 2 - 150) {
+      //   left += 300;
+      // }
+      // this.randomIcon[index]["left"] = left;
     },
     full() {
-      if (!this.fullButton.full) {
-        this.$util.fullScreen();
-        this.fullButton.full = true;
-      } else {
-        this.$util.fullExit();
-        this.fullButton.full = false;
-      }
+      // if (!this.fullButton.full) {
+      //   // this.$util.fullScreen();
+      //   this.fullButton.full = true;
+      // } else {
+      //   // this.$util.fullExit();
+      //   this.fullButton.full = false;
+      // }
     },
     listenMusic() {
       if (!this.$refs.music) {
