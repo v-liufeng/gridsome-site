@@ -8,9 +8,18 @@ const axios = require('axios')
 
 module.exports = function (api) {
   api.loadSource(async ({ addCollection }) => {
-    // 获取用户信息
+    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+    
     const user = addCollection('User')
+
+    const blog = addCollection('Blog')
+    const followers = addCollection('Followers')
+    const followings = addCollection('Followings')
+    // const users = addCollection('Users')
+    
     let githubUsername = 'GitHub-Laziji'
+
+    // 获取用户信息
     const userData  = await axios.get(`https://api.github.com/users/${githubUsername}`)
     user.addNode({
       login: userData.data.login,
@@ -20,7 +29,6 @@ module.exports = function (api) {
     })
 
     // 获取最新动态
-    const blog = addCollection('Blog')
     const { data } = await axios.get(`https://api.github.com/users/${githubUsername}/gists?page=1&per_page=1`)
     const blogRes = await axios.get(`https://api.github.com/gists/${data[0]["id"]}`)
 
@@ -34,9 +42,8 @@ module.exports = function (api) {
         updateTime: blogRes.data["updated_at"]
       })
     }
-    
-    // 粉丝列表
-    const followers = addCollection('Followers')
+
+    // 获取粉丝列表
     const followersRes = await axios.get(`https://api.github.com/users/${githubUsername}/followers?page=1&per_page=${userData.data.followers}`)
     for (const item of followersRes.data) {
       followers.addNode({
@@ -47,8 +54,7 @@ module.exports = function (api) {
       })
     }
 
-    // 我的关注
-    const followings = addCollection('Followings')
+    // 获取关注列表
     const followingsRes = await axios.get(`https://api.github.com/users/${githubUsername}/following?page=1&per_page=${userData.data.following}`)
     for (const item of followingsRes.data) {
       followings.addNode({
@@ -58,12 +64,33 @@ module.exports = function (api) {
         avatarUrl: item.avatar_url
       })
     }
+    
+    // 添加详情数据
+    // let userList = []
+    // userList= userList.concat(followersRes.data).concat(followingsRes.data)
+    // for (const item of userList) {
+    //   const usersRes = await axios.get(`https://api.github.com/users/${item.login}`)
+    //   users.addNode({
+    //     name: usersRes.data.name,
+    //     avatarUrl: usersRes.data.avatar_url,
+    //     htmlUrl: usersRes.data.html_url,
+    //     blog: usersRes.data.blog,
+    //     location: usersRes.data.location,
+    //     bio: usersRes.data.bio,
+    //     email: usersRes.data.email,
+    //     followers: usersRes.data.followers,
+    //     following: usersRes.data.following,
+    //     publicRepos: usersRes.data.publicRepos
+    //   })
+    // }
+
   })
 
   api.createPages(({ createPage }) => {
-    // createPage({
-    //   path: '/social/details/:name',
-    //   component: './src/templates/Details.vue'
-    // })
+    // Use the Pages API here: https://gridsome.org/docs/pages-api/
+    createPage({
+      path: '/User/:name',
+      component: './src/templates/User.vue'
+    })
   })
 }

@@ -1,4 +1,4 @@
-
+import configurationData from '../../../static/configuration.js'
 const configuration = {
     state: {
         githubUsername: "",
@@ -57,8 +57,9 @@ const configuration = {
             // }
             // xmlhttp.open("GET", "../../../static/configuration.json", false)
             // xmlhttp.send()
+
             // let configuration = JSON.parse(xmlhttp.responseText)
-            commit('SET_CONFIGURATION', configuration)
+            commit('SET_CONFIGURATION', configurationData)
         }
     }
 }

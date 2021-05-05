@@ -1,28 +1,26 @@
 <template>
   <section>
     <transition name="fade">
-      <router-view></router-view>
+      <slot/>
     </transition>
   </section>
 </template>
 
 <script>
-  export default {
-    name: 'AppMain',
-    computed: {
-
-    }
-  }
+export default {
+  name: "AppMain",
+  computed: {},
+};
 </script>
 
 <style>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity .2s;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
 
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

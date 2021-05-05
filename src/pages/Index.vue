@@ -41,22 +41,18 @@ query {
 </page-query>  
 
 <script>
-  import mavonEditor from 'mavon-editor'
-  export default {
-    data() {
-      return {
-      //  blog: {},
-        loading: false
-      }
-    },
-    computed: {
-      blog () {
-        const oldBlog = this.$page.allBlog.edges[0].node
-        return {
-          ...oldBlog,
-          content: mavonEditor.markdownIt.render(oldBlog.content)
-        }
-      }
+import mavonEditor from 'mavon-editor'
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    blog () {
+      return this.$page.allBlog.edges[0].node
     }
+  },
+  mounted(){
+    this.blog.content = mavonEditor.markdownIt.render(this.blog.content)
   }
+};
 </script>

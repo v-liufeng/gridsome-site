@@ -273,18 +273,18 @@ export default {
     this.$nextTick(() => {
       setInterval(this.listenMusic, 1000);
     });
-    // let width = window.innerWidth;
-    // for (let i = 0; i < 12; i++) {
-    //   let temp = {};
-    //   let left = this.$util.randomInt(10, width - 310);
-    //   if (left > width / 2 - 150) {
-    //     left += 300;
-    //   }
-    //   temp["left"] = left;
-    //   temp["top"] = this.$util.randomInt(20, 300);
-    //   temp["size"] = this.$util.randomInt(20, 40);
-    //   this.randomIcon.push(temp);
-    // }
+    let width = window.innerWidth;
+    for (let i = 0; i < 12; i++) {
+      let temp = {};
+      let left = this.$util.randomInt(10, width - 310);
+      if (left > width / 2 - 150) {
+        left += 300;
+      }
+      temp["left"] = left;
+      temp["top"] = this.$util.randomInt(20, 300);
+      temp["size"] = this.$util.randomInt(20, 40);
+      this.randomIcon.push(temp);
+    }
   },
   created() {
     this.$store.dispatch("Init")
@@ -319,22 +319,22 @@ export default {
       }
     },
     moveIcon(index) {
-      // let width = window.innerWidth;
-      // this.randomIcon[index]["top"] = this.$util.randomInt(20, 300);
-      // let left = this.$util.randomInt(10, width - 310);
-      // if (left > width / 2 - 150) {
-      //   left += 300;
-      // }
-      // this.randomIcon[index]["left"] = left;
+      let width = window.innerWidth;
+      this.randomIcon[index]["top"] = this.$util.randomInt(20, 300);
+      let left = this.$util.randomInt(10, width - 310);
+      if (left > width / 2 - 150) {
+        left += 300;
+      }
+      this.randomIcon[index]["left"] = left;
     },
     full() {
-      // if (!this.fullButton.full) {
-      //   // this.$util.fullScreen();
-      //   this.fullButton.full = true;
-      // } else {
-      //   // this.$util.fullExit();
-      //   this.fullButton.full = false;
-      // }
+      if (!this.fullButton.full) {
+        this.$util.fullScreen();
+        this.fullButton.full = true;
+      } else {
+        this.$util.fullExit();
+        this.fullButton.full = false;
+      }
     },
     listenMusic() {
       if (!this.$refs.music) {
@@ -382,30 +382,36 @@ export default {
   background-color: #159957;
   background-image: linear-gradient(120deg, #155799, #159957);
 }
+
 .project-name {
   font-size: 3.25rem;
   margin-top: 0;
   margin-bottom: 0.1rem;
 }
+
 .project-tagline {
   font-size: 1.25rem;
   margin-bottom: 2rem;
   font-weight: normal;
   opacity: 0.7;
 }
+
 .btn:hover {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.3);
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 a:active,
 a:hover {
   outline: 0;
 }
+
 .btn {
   padding: 0.75rem 1rem;
   display: inline-block;
@@ -418,13 +424,16 @@ a:hover {
   border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
+
 a {
   color: #1e6bb8;
   text-decoration: none;
 }
+
 .btn + .btn {
   margin-left: 1rem;
 }
+
 .main-content {
   max-width: 64rem;
   padding: 30px 0px 30px 0px;
@@ -433,6 +442,7 @@ a {
   word-wrap: break-word;
   min-height: 800px;
 }
+
 .foot {
   max-width: 67rem;
   margin: 0 auto;

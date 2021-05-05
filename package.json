@@ -2,9 +2,9 @@
   "name": "my-gridsome-site",
   "private": true,
   "scripts": {
+    "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore",
-    "build": "gridsome build"
+    "explore": "gridsome explore"
   },
   "dependencies": {
     "axios": "^0.21.1",

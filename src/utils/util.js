@@ -48,34 +48,34 @@ export default {
         return r
     },
     fullScreen() {
-        // var element = document.documentElement
-        // if (window.ActiveXObject) {
-        //     var WsShell = new ActiveXObject('WScript.Shell')
-        //     WsShell.SendKeys('{F11}')
-        // } else if (element.requestFullScreen) {
-        //     element.requestFullScreen()
-        // } else if (element.msRequestFullscreen) {
-        //     element.msRequestFullscreen()
-        // } else if (element.webkitRequestFullScreen) {
-        //     element.webkitRequestFullScreen()
-        // } else if (element.mozRequestFullScreen) {
-        //     element.mozRequestFullScreen()
-        // }
+        var element = document.documentElement
+        if (window.ActiveXObject) {
+            var WsShell = new ActiveXObject('WScript.Shell')
+            WsShell.SendKeys('{F11}')
+        } else if (element.requestFullScreen) {
+            element.requestFullScreen()
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen()
+        } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen()
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen()
+        }
     },
     fullExit() {
-        // var element = document.documentElement
-        // if (window.ActiveXObject) {
-        //     var WsShell = new ActiveXObject('WScript.Shell')
-        //     WsShell.SendKeys('{F11}')
-        // } else if (element.requestFullScreen) {
-        //     document.exitFullscreen()
-        // } else if (element.msRequestFullscreen) {
-        //     document.msExitFullscreen()
-        // } else if (element.webkitRequestFullScreen) {
-        //     document.webkitCancelFullScreen()
-        // } else if (element.mozRequestFullScreen) {
-        //     document.mozCancelFullScreen()
-        // }
+        var element = document.documentElement
+        if (window.ActiveXObject) {
+            var WsShell = new ActiveXObject('WScript.Shell')
+            WsShell.SendKeys('{F11}')
+        } else if (element.requestFullScreen) {
+            document.exitFullscreen()
+        } else if (element.msRequestFullscreen) {
+            document.msExitFullscreen()
+        } else if (element.webkitRequestFullScreen) {
+            document.webkitCancelFullScreen()
+        } else if (element.mozRequestFullScreen) {
+            document.mozCancelFullScreen()
+        }
     },
 
     parseHeaders(headers) {
@@ -121,12 +121,6 @@ export default {
 
         return (m < 10 ? "0" : "") + parseInt(it / 60) + ":" + (s < 10 ? "0" : "") + parseInt(it % 60)
     },
-    // getWindowSize() {
-    //     let windowSize = {}
-    //     windowSize.width = window.innerWeight || document.documentElement.clientWidth || document.body.clientWidth
-    //     windowSize.height = window.innerWeight || document.documentElement.clientHeight || document.body.clientHeight
-    //     return windowSize
-    // },
     addHttp(url){
         return (url.match(/https?:\/\//i)?'':'https://') + url
     }
